@@ -1,5 +1,6 @@
 server:
-  port: 9001
+  # 포트 번호를 랜덤하게 설정
+  port: 0
 
 spring:
   application:
