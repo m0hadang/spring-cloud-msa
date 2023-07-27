@@ -29,18 +29,19 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/health_check")
+    @GetMapping("/user-service/health_check")
     public String status() {
-        return "It's Working is User Service";
+        return String.format("It's Working is User Service ib PORT %s",
+                env.getProperty("local.server.port"));
     }
 
-    @GetMapping("/welcom")
+    @GetMapping("/user-service/welcom")
     public String welcom() {
 //        return env.getProperty("greeting.message");
         return greeting.getMessage();
     }
 
-    @PostMapping("/users")
+    @PostMapping("/user-service/users")
     public ResponseEntity<ResponseUser> createUser(@RequestBody RequestUser user) {
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
