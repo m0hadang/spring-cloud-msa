@@ -58,7 +58,7 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<ResponseUser>> getUser() {
+    public ResponseEntity<List<ResponseUser>> getUsers() {
         Iterable<UserEntity> userList = userService.getUserByAll();
 
         List<ResponseUser> result = new ArrayList<>();
@@ -67,6 +67,7 @@ public class UserController {
         });
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
     @GetMapping("/users/{userId}")
     public ResponseEntity<ResponseUser> getUser(@PathVariable("userId") String userId) {
         UserDto userDto  = userService.getUserByUserId(userId);
